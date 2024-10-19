@@ -17,4 +17,4 @@ EXPOSE 9150
 ENV FLASK_ENV=production
 
 # Run the application
-CMD ["python", "meta_cache.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:9150", "meta_cache:app"]
