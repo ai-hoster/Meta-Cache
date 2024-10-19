@@ -33,5 +33,5 @@ jobs:
       - name: Build Docker Image
         run: docker build -t meta_cache_app .
 
-      - name: Run Docker container
-        run: docker run -p 9150:9150 meta_cache_app
+    #   - name: Run Docker container
+    #     run: docker run -p 9150:9150 meta_cache_app
