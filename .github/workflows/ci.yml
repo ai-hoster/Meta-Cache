@@ -32,6 +32,3 @@ jobs:
           
       - name: Build Docker Image
         run: docker build -t meta_cache_app .
-
-      - name: Run Docker container For 1 Minute
-        run: timeout 1m docker run -p 9150:9150 meta_cache_app
