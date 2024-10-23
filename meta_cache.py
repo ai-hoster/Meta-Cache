@@ -103,9 +103,9 @@ if __name__ == '__main__':
     # Load hashes into memory at startup
     file_hashes = load_hashes()
 
-    # # Start periodic save thread
-    # save_thread = threading.Thread(target=periodic_save, daemon=True)
-    # save_thread.start()
+    # Start periodic save thread
+    save_thread = threading.Thread(target=periodic_save, daemon=True)
+    save_thread.start()
 
     # Register exit handler
     atexit.register(on_exit)
