@@ -32,6 +32,15 @@ docker run -d -p 9150:9150 mattzh/meta-cache
   - `400 Bad Request`: Returns `{"error": "No file hash provided"}` if the `file_hash` is missing.
   - `500 Internal Server Error`: Returns `{"error": "error message"}` if an exception occurs.
 
+### POST /remove-hash
+- **Description**: Removes an existing file hash from the store.
+- **Request Body**: JSON object with a key `file_hash`.
+- **Responses**:
+  - `200 OK`: Returns `{"removed": true}` if the hash is successfully removed.
+  - `200 OK`: Returns `{"removed": false, "reason": "File hash does not exist"}` if the hash does not exist.
+  - `400 Bad Request`: Returns `{"error": "No file hash provided"}` if the `file_hash` is missing.
+  - `500 Internal Server Error`: Returns `{"error": "error message"}` if an exception occurs.
+
 ## License
 
 This project is licensed under the terms of the LICENSE file.
