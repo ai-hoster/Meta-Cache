@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.13
 
       - name: Install dependencies
         run: |
@@ -57,7 +57,7 @@ jobs:
           images: mattzh/Meta-Cache
           tags: |
             type=semver,pattern={{version}}
-            latest=true
+            type=raw,value=latest
 
       - name: Build and push Docker image
         id: push
