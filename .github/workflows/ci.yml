@@ -55,6 +55,9 @@ jobs:
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
           images: mattzh/Meta-Cache
+          tags: |
+            type=semver,pattern={{version}}
+            latest=true
 
       - name: Build and push Docker image
         id: push
