@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  # pull_request:
-  #   branches:
-  #     - main
 
 jobs:
   build:
@@ -32,14 +29,17 @@ jobs:
           
       - name: Build Docker Image
         run: docker build -t meta_cache_app .
+
   push_to_registry:
     name: Push Docker image to Docker Hub
+    needs: build  # This ensures the push happens only after build success
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
       attestations: write
       id-token: write
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -69,6 +69,7 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          # subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-name: docker.io/mattzh/Meta-Cache
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
